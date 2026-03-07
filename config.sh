@@ -19,6 +19,7 @@ export OUTPUT="OrangeFox*.zip"
 # Format: "repo dest"
 DEPS=(
     "https://github.com/OrangeFoxRecovery/Avatar.git misc"
+    "https://github.com/jsauce454/twrp_device_google_blazer/tree/main/prebuilt"
 )
 
 # Extra Command
