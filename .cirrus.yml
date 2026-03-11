@@ -1,12 +1,12 @@
 env:
-    # OrangeFox Sync Repository
-    FOX_SYNC: https://gitlab.com/OrangeFox/sync.git
+  # OrangeFox Sync Repository
+  FOX_SYNC: https://gitlab.com/OrangeFox/sync.git
 
-    # Config
-    CONFIG: config.sh
+  # Config
+  CONFIG: config.sh
 
-    # Cirrus Specific Vars (Do *NOT* Change)
-    CIRRUS_SHELL: bash
+  # Cirrus Specific Vars (Do *NOT* Change)
+  CIRRUS_SHELL: bash
 
 task:
   name: "Recovery Build"
@@ -26,20 +26,5 @@ task:
       - bash -c "$(curl -sL https://raw.githubusercontent.com/OrangeFoxRecovery/OrangeFox-CI/fox/scripts/build.sh)"
 
   Upload_script:
-      - export TIMEOUT=43200 # Link timeout (in minutes)
+      - export TIMEOUT=43200
       - bash -c "$(curl -sL https://raw.githubusercontent.com/OrangeFoxRecovery/OrangeFox-CI/fox/scripts/upload.sh)"
-
-  # Debug: List files in sync path
-  debug_files_script:
-      - ls -la $HOME/fox_14.1/
-      - ls -la $HOME/fox_14.1/build/ 2>/dev/null || echo "No build directory"
-
-  # Debug: Show envsetup.sh existence
-  debug_envsetup_script:
-      - test -f $HOME/fox_14.1/build/envsetup.sh && echo "envsetup.sh EXISTS" || echo "envsetup.sh MISSING"
-
-  # Save build logs as artifact
-  logs_artifacts:
-      path: /tmp/*.log
-      type: text/plain
-      optional: true
